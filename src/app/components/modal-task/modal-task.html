@@ -1,0 +1,32 @@
+<div class="modal">
+    <div class="header__modal">
+        <h4 class="heasder__modal__h4">Registro de Tarea</h4>
+    </div>
+
+    <form class="content__modal" [formGroup]="taskForm">
+        <input type="hidden" name="id">
+
+        <div class="content__modal__field">
+            <label for="title">Título:</label>
+            <input type="text" formControlName="title" id="title" placeholder="Título de la tarea">
+        </div>
+
+        <div class="content__modal__field">
+            <label for="description">Descripción: </label>
+            <textarea rows="5" cols="30" formControlName="description" id="description"></textarea>
+        </div>
+
+        <div class="content__modal__field--checkbox">
+            <label for="isCompleted">Completada:</label>
+            <input type="checkbox" formControlName="isCompleted" id="isCompleted">
+        </div>
+
+    </form>
+
+    <div class="footer__modal">
+        <div class="footer__modal__actions">
+            <button [disabled]="taskForm.invalid" class="footer__modal__button" (click)="onSubmit()">Registrar</button>
+            <button class="footer__modal__button--cancel" type="button" (click)="closeModal()">Cancelar</button>
+        </div>
+    </div>
+</div>

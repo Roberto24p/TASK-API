@@ -1,0 +1,68 @@
+<div class="modal">
+    <div class="header__modal">
+        <h4 class="heasder__modal__h4">
+            {{ isLoginMode ? 'Iniciar Sesión' : 'Registrar Nuevo Usuario' }}
+        </h4>
+    </div>
+
+    <form class="content__modal" [formGroup]="authForm" (ngSubmit)="onSubmit()">
+
+        <div class="content__modal__field">
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                formControlName="email" 
+                id="email" 
+                placeholder="usuario@ejemplo.com"
+            >
+            <small *ngIf="authForm.get('email')?.touched && authForm.get('email')?.errors?.['email']" 
+                   class="error-message">
+                   Formato de email inválido.
+            </small>
+            <small *ngIf="authForm.get('email')?.touched && authForm.get('password')?.errors?.['required']" 
+                   class="error-message">
+                   El email es obligatorio.
+            </small>
+        </div>
+
+        <div class="content__modal__field">
+            <label for="password">Contraseña:</label>
+            <input 
+                type="password" 
+                formControlName="password" 
+                id="password"
+                placeholder="Mínimo 6 caracteres"
+            >
+             <small *ngIf="authForm.get('password')?.touched && authForm.get('password')?.errors?.['required']" 
+                   class="error-message">
+                   La contraseña es obligatoria.
+            </small>
+        </div>
+
+        <div class="content__modal__switch">
+            <a (click)="toggleMode()" class="link-switch">
+                {{ isLoginMode ? '¿No tienes cuenta? Regístrate aquí.' : '¿Ya tienes cuenta? Inicia sesión.' }}
+            </a>
+        </div>
+
+    </form>
+
+    <div class="footer__modal">
+        <div class="footer__modal__actions">
+            <button 
+                [disabled]="authForm.invalid" 
+                class="footer__modal__button" 
+                (click)="onSubmit()"
+                type="button">
+                {{ isLoginMode ? 'Acceder' : 'Registrar' }}
+            </button>
+            
+            <button 
+                class="footer__modal__button--cancel" 
+                (click)="closeModal()" 
+                type="button">
+                Cancelar
+            </button>
+        </div>
+    </div>
+</div>

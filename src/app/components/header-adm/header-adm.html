@@ -1,0 +1,16 @@
+
+<div class="header">
+  <h3 class="header__h3">Administración de tareas</h3>
+  <div class="header__content">
+    <div class="header__content__selects">
+
+    </div>
+    <div class="header__button">
+      <button class="primary" (click)="openNewTask()" *ngIf="isAuthenticated$ | async">Crear nueva tareas</button>
+      <button class="primary" (click)="openAuth()" *ngIf="!(isAuthenticated$ | async)">Identificate</button>
+      <button class="secondary" (click)="logout()" *ngIf="isAuthenticated$ | async">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+</div>

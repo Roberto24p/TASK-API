@@ -30,6 +30,7 @@
               }
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.sass"
             ]
           },
@@ -88,7 +89,13 @@
               }
             ],
             "styles": [
-              "src/styles.sass"
+              "src/styles.sass",
+
+  "node_modules/primeicons/primeicons.css",
+
+  "node_modules/primeng/resources/primeng.min.css",
+
+  "node_modules/@primeng/themes/aura/aura-light-blue.css" 
             ]
           }
         }
